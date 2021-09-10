@@ -1,5 +1,7 @@
 package br.inatel.cdg.algebra.scene;
 
+import br.inatel.cdg.algebra.reta.Reta;
+import br.inatel.cdg.algebra.reta.Ponto;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -58,23 +60,27 @@ public class ScenePrincipal {
         // Aqui dentro é a ação que será executado ao pressionar o botão.
 
         btnCoeficienteLinear.setOnAction(CalcCoeficienteLinear -> {
-            int ptx1, ptx2, pty1, pty2;
-            ptx1 = Integer.parseInt(textInputx1.getText());
-            ptx2 = Integer.parseInt(textInputx2.getText());
-            pty1 = Integer.parseInt(textInputy1.getText());
-            pty2 = Integer.parseInt(textInputy2.getText());
+            int x1, x2, y1, y2;
+            x1 = Integer.parseInt(textInputx1.getText());
+            x2 = Integer.parseInt(textInputx2.getText());
+            y1 = Integer.parseInt(textInputy1.getText());
+            y2 = Integer.parseInt(textInputy2.getText());
 
-            textOutCoefLin.setText(String.valueOf(Coeficientelinear(ptx1, ptx2, pty1, pty2)));
+            Reta reta = criarReta(x1, y1, x2, y2);
+
+            textOutCoefLin.setText(String.valueOf(reta.calcCoeficientelinear()));
 
         });
         btnCoeficienteAngular.setOnAction(CalcCoeficienteAngulaer -> {
-            int ptx1, ptx2, pty1, pty2;
-            ptx1 = Integer.parseInt(textInputx1.getText());
-            ptx2 = Integer.parseInt(textInputx2.getText());
-            pty1 = Integer.parseInt(textInputy1.getText());
-            pty2 = Integer.parseInt(textInputy2.getText());
+            int x1, x2, y1, y2;
+            x1 = Integer.parseInt(textInputx1.getText());
+            x2 = Integer.parseInt(textInputx2.getText());
+            y1 = Integer.parseInt(textInputy1.getText());
+            y2 = Integer.parseInt(textInputy2.getText());
 
-            textOutCoefLin.setText(String.valueOf(Coeficienteangular(ptx1, ptx2, pty1, pty2)));
+            Reta reta = criarReta(x1, y1, x2, y2);
+
+            textOutCoefLin.setText(String.valueOf(reta.calcCoeficienteangular()));
 
         });
 
@@ -94,21 +100,14 @@ public class ScenePrincipal {
         stage.show();
     }
 
-    public double Coeficienteangular(int ptx1, int ptx2, int pty1, int pty2) {
+    public Reta criarReta(double x1, double y1, double x2, double y2) {
 
-        double result;
-        result = (pty2 - pty1) / (ptx2 - ptx1);
+        Ponto p1 = new Ponto(x1, y1);
+        Ponto p2 = new Ponto(x2, y2);
 
-        return result;
+        Reta reta = new Reta(p1, p2);
 
-    }
-
-    public double Coeficientelinear(int ptx1, int ptx2, int pty1, int pty2) {
-
-        double result;
-        result = pty1 - Coeficienteangular(ptx1, ptx2, pty1, pty2) * ptx1;
-
-        return result;
+        return reta;
 
     }
 
