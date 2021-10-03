@@ -1,5 +1,4 @@
 package br.inatel.cdg.algebra.scene;
-
 import br.inatel.cdg.algebra.reta.Reta;
 import br.inatel.cdg.algebra.reta.Ponto;
 import javafx.scene.Scene;
@@ -40,11 +39,8 @@ public class ScenePrincipal {
         HBox grupoHorizontal2 = new HBox(pontoy1, textInputy1);
         HBox grupoHorizontal3 = new HBox(pontox2, textInputx2);
         HBox grupoHorizontal4 = new HBox(pontoy2, textInputy2);
-        HBox grupoHorizontal5 = new HBox(textOutCoefLin, textOutCoefAng);
-        HBox grupoHorizontal6 = new HBox(btnCoeficienteLinear, btnCoeficienteAngular);
 
         // Agora vamos criar a area que mostrará o que foi digitado
-
         textOutCoefLin = new TextField();
         textOutCoefAng = new TextField();
         textOutCoefLin.setEditable(false); // vamos deixar false para apenas mostrar texto.
@@ -52,13 +48,12 @@ public class ScenePrincipal {
         textOutCoefLin.setText("Coef Linear: ");
         textOutCoefAng.setText("Coef Angular: ");
 
+        HBox grupoHorizontal5 = new HBox(textOutCoefLin, textOutCoefAng);
+        // Criamos a ação que o botão responderá as ser pressionado.
+        // Aqui dentro é a ação que será executado ao pressionar o botão.
         // Criamos o botão
         btnCoeficienteLinear = new Button("Calcula Coeficiente Linear");
         btnCoeficienteAngular = new Button("Calcula Coeficiente Angular");
-
-        // Criamos a ação que o botão responderá as ser pressionado.
-        // Aqui dentro é a ação que será executado ao pressionar o botão.
-
         btnCoeficienteLinear.setOnAction(CalcCoeficienteLinear -> {
             int x1, x2, y1, y2;
             x1 = Integer.parseInt(textInputx1.getText());
@@ -83,6 +78,7 @@ public class ScenePrincipal {
             textOutCoefLin.setText(String.valueOf(reta.calcCoeficienteangular()));
 
         });
+        HBox grupoHorizontal6 = new HBox(btnCoeficienteLinear, btnCoeficienteAngular);
 
         // VBox é usada para agrupar elementos verticalmente.
         // No construtor passamos todos os elementos que serão agrupados, que podem ser

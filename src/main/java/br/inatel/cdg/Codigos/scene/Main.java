@@ -1,6 +1,5 @@
-package br.inatel.cdg.algebra;
+package br.inatel.cdg.algebra.scene;
 
-import br.inatel.cdg.algebra.scene.ScenePrincipal;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
